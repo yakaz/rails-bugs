@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @lookup_key.key %>
+</p>
+
+<p>
+  <b>Default value:</b>
+  <%= @lookup_key.default_value %>
+</p>
+
+<p>
+  <b>Puppetclass:</b>
+  <%= @lookup_key.puppetclass.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_lookup_key_path(@lookup_key) %> |
+<%= link_to 'Back', lookup_keys_path %>

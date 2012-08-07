@@ -1,0 +1,32 @@
+<div <%= "id=#{(f.object.key || 'new_lookup_keys').to_s.gsub(' ','_')}" %> class="fields" >
+
+  <%= remove_child_link "Remove #{f.object.new_record? ? "Variable" : f.object}", f unless controller_name == "lookup_keys" %>
+
+  <%=
+    if params["puppetclass_id"] # new smart-var inside a puppetclass (REST nesting only)
+      # Show the parent puppetclass as a context, but permit no change
+      f.collection_select :puppetclass_id, [Puppetclass.from_param(params["puppetclass_id"])], :id, :to_label, {}, {:label => "Puppet class", :disabled => true}
+    else # new smart-var with no particular context
+      # Give a select for choosing the parent puppetclass
+      f.collection_select :puppetclass_id, Puppetclass.all, :id, :to_label, { :include_blank => 'None' }, {:label => "Puppet class"}
+    end unless @puppetclass or f.parent_builder.try(:object).is_a? Puppetclass # nested smart-vars form in a tab of puppetclass/_form: no edition allowed, and the puppetclass is already visible as a context
+  %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :default_value %><br />
+    <%= f.text_field :default_value %>
+  </div>
+
+  <div id="lookup_values">
+    <%= f.fields_for :lookup_values do |builder| %>
+      <%= render :partial => 'lookup_values/fields', :locals => { :f => builder } %>
+    <% end -%>
+    <%= add_child_link 'New lookup values', :lookup_values %>
+    <%= new_child_fields_template f, :lookup_values, {:partial => 'lookup_values/fields'} %>
+  </div>
+
+</div>

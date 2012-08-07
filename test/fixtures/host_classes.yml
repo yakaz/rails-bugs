@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  host: one
+  puppetclass: one
+
+two:
+  host: two
+  puppetclass: two

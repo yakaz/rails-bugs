@@ -1,0 +1,27 @@
+<h1>Listing lookup_values</h1>
+
+<table>
+  <tr>
+    <th>Matcher</th>
+    <th>Value</th>
+    <th>Lookup key</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lookup_values.each do |lookup_value| %>
+  <tr>
+    <td><%= lookup_value.matcher %></td>
+    <td><%= lookup_value.value %></td>
+    <td><%= lookup_value.lookup_key.to_label %></td>
+    <td><%= link_to 'Show', lookup_value %></td>
+    <td><%= link_to 'Edit', edit_lookup_value_path(lookup_value) %></td>
+    <td><%= link_to 'Destroy', lookup_value, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lookup value', new_lookup_value_path %>

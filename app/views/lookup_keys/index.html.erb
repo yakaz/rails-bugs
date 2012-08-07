@@ -1,0 +1,27 @@
+<h1>Listing lookup_keys</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Default value</th>
+    <th>Puppetclass</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lookup_keys.each do |lookup_key| %>
+  <tr>
+    <td><%= lookup_key.key %></td>
+    <td><%= lookup_key.default_value %></td>
+    <td><%= lookup_key.puppetclass.name %></td>
+    <td><%= link_to 'Show', lookup_key %></td>
+    <td><%= link_to 'Edit', edit_lookup_key_path(lookup_key) %></td>
+    <td><%= link_to 'Destroy', lookup_key, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lookup key', new_lookup_key_path %>

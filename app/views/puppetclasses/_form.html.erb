@@ -1,0 +1,30 @@
+<%= form_for(@puppetclass) do |f| %>
+  <% if @puppetclass.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@puppetclass.errors.count, "error") %> prohibited this puppetclass from being saved:</h2>
+
+      <ul>
+        <% @puppetclass.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div id="lookup_keys">
+    <%= f.fields_for :lookup_keys do |builder| %>
+      <%= render :partial => 'lookup_keys/fields', :locals => { :f => builder } %>
+    <% end -%>
+    <%= add_child_link 'New lookup keys', :lookup_keys %>
+    <%= new_child_fields_template f, :lookup_keys, {:partial => 'lookup_keys/fields'} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

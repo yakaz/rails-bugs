@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  matcher: hostname=host1
+  value: host1_val_1
+  lookup_key: one
+
+onebis:
+  matcher: prop=value
+  value: host1_val_1_bis
+  lookup_key: one
+
+two:
+  matcher: hostname=host1
+  value: host1_val_2
+  lookup_key: two

@@ -1,0 +1,23 @@
+<h1>Listing puppetclasses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @puppetclasses.each do |puppetclass| %>
+  <tr>
+    <td><%= puppetclass.name %></td>
+    <td><%= link_to 'Show', puppetclass %></td>
+    <td><%= link_to 'Edit', edit_puppetclass_path(puppetclass) %></td>
+    <td><%= link_to 'Destroy', puppetclass, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Puppetclass', new_puppetclass_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @puppetclass.name %>
+</p>
+
+<h2>Lookup keys</h2>
+<% @puppetclass.lookup_keys.each do |lookup_key| %>
+  <p><b><%= lookup_key.key %>:</b> <%= lookup_key.default_value %></p>
+<% end -%>
+
+
+<%= link_to 'Edit', edit_puppetclass_path(@puppetclass) %> |
+<%= link_to 'Back', puppetclasses_path %>

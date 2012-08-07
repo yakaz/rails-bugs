@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: key1
+  default_value: def_val_1
+  puppetclass: one
+
+two:
+  key: key2
+  default_value: def_val_2
+  puppetclass: two

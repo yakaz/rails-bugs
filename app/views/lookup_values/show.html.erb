@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Matcher:</b>
+  <%= @lookup_value.matcher %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @lookup_value.value %>
+</p>
+
+<p>
+  <b>Lookup key:</b>
+  <%= @lookup_value.lookup_key.to_label %>
+</p>
+
+
+<%= link_to 'Edit', edit_lookup_value_path(@lookup_value) %> |
+<%= link_to 'Back', lookup_values_path %>

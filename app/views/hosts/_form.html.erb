@@ -1,0 +1,49 @@
+<%= form_for(@host) do |f| %>
+  <% if @host.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@host.errors.count, "error") %> prohibited this host from being saved:</h2>
+
+      <ul>
+      <% @host.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <h2>Puppetclasses</h2>
+  <ul>
+    <%= f.fields_for :puppetclass_ids do |builder| %>
+      <%= builder.hidden_field '' %>
+      <% Puppetclass.all.sort { |pc1,pc2| pc1.name <=> pc2.name }.each do |puppetclass| %>
+        <%= content_tag :li do %>
+          <%= builder.label '' do %>
+            <%= builder.check_box '', { :checked => @host.puppetclass_ids.include?(puppetclass.id) }, puppetclass.id, '' %>
+            <%= puppetclass.name %>
+          <% end -%>
+        <% end -%>
+      <% end -%>
+    <% end -%>
+  </ul>
+
+  <h2>Lookup values</h2>
+  <ul>
+    <%# XXX This is the problematic form XXX %>
+    <%= f.fields_for :lookup_values do |builder| %>
+      <%= content_tag :li, :class => 'fields' do %>
+        <%= builder.object.lookup_key.to_label %> =
+        <%= builder.text_field :value %>
+        <%= remove_child_link "Remove", builder %>
+      <% end -%>
+    <% end -%>
+  </ul>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

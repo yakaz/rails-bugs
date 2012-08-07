@@ -1,0 +1,25 @@
+<%= form_for(@host_class) do |f| %>
+  <% if @host_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@host_class.errors.count, "error") %> prohibited this host_class from being saved:</h2>
+
+      <ul>
+      <% @host_class.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host %><br />
+    <%= f.text_field :host %>
+  </div>
+  <div class="field">
+    <%= f.label :puppetclass %><br />
+    <%= f.text_field :puppetclass %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

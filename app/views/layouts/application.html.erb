@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TestShortcut</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="topbar">
+    <ul class="inline menu">
+      <li><%= link_to 'Hosts', hosts_path %></li>
+      <li><%= link_to 'Puppetclasses', puppetclasses_path %></li>
+      <li><%= link_to 'Lookup keys', lookup_keys_path %></li>
+      <li><%= link_to 'Lookup values', lookup_values_path %></li>
+    </ul>
+  </div>
+
+<%= yield %>
+
+<div id="jstemplates">
+  <%= yield :jstemplates %>
+</div>
+
+</body>
+</html>

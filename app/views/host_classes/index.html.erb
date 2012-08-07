@@ -1,0 +1,25 @@
+<h1>Listing host_classes</h1>
+
+<table>
+  <tr>
+    <th>Host</th>
+    <th>Puppetclass</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @host_classes.each do |host_class| %>
+  <tr>
+    <td><%= host_class.host %></td>
+    <td><%= host_class.puppetclass %></td>
+    <td><%= link_to 'Show', host_class %></td>
+    <td><%= link_to 'Edit', edit_host_class_path(host_class) %></td>
+    <td><%= link_to 'Destroy', host_class, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Host class', new_host_class_path %>

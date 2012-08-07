@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @host.name %>
+</p>
+
+
+<h2>Puppetclasses</h2>
+<ul>
+  <% @host.puppetclasses.each do |puppetclass| %>
+    <%= content_tag :li do %>
+      <%= puppetclass.to_label %>
+    <% end -%>
+  <% end -%>
+</ul>
+
+<h2>Lookup values</h2>
+<ul>
+  <% @host.lookup_values.each do |lookup_value| %>
+    <%= content_tag :li do %>
+      <%= lookup_value.to_label %>
+    <% end -%>
+  <% end -%>
+</ul>
+
+<%= link_to 'Edit', edit_host_path(@host) %> |
+<%= link_to 'Back', hosts_path %>
